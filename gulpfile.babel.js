@@ -36,7 +36,7 @@ gulp.task('babel', () =>
     .pipe(gulp.dest('./dist'))
 );
 
-gulp.task('nodemon', () => gulp.series(
+gulp.task('nodemon', gulp.series(
   'copy',
   'babel',
   () => nodemon({
