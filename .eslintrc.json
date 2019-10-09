@@ -1,0 +1,46 @@
+{
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2017,
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": [
+            2,
+            2,
+            {   
+                "SwitchCase": 1
+            }
+        ],
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": "error",
+        "comma-dangle": [
+            "error",
+            "always-multiline"
+        ],
+        "arrow-parens": [
+            "error",
+            "always"
+        ],
+        "arrow-body-style": [
+            "error",
+            "as-needed"
+        ],
+        "space-before-function-paren": ["error", "never"],
+        "no-console": 1,
+        "handle-callback-err": 0
+    }
+}
