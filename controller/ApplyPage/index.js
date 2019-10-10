@@ -4,9 +4,8 @@ class ApplyController {
     res.render(
       'apply',
       {
-        title: 'Home Page',
+        title: 'Apply to get more Information',
       });
-    
   }
 }
 
