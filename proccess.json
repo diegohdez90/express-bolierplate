@@ -1,0 +1,21 @@
+{
+    "apps" : [{
+      "name"        : "RCI",
+      "script"      : "dist/index.js",
+      "watch"       : true,
+      "cwd"         : "./",
+      "env": {
+        "NODE_ENV": "development",
+        "T4R_ENV": "development"
+      },
+      "env_production" : {
+        "NODE_ENV": "production",
+        "T4R_ENV": "production"
+      },
+      "env_staging" : {
+        "NODE_ENV" : "staging",
+        "TEST"     : true
+      }
+    }]
+}
+  

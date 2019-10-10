@@ -1,6 +1,8 @@
 import express from 'express';
 
 import HomePageRouter from './HomePage';
+import UsersRouter from './User';
+import RequestRouter from  './Request';
 
 const router = express.Router();
 
@@ -11,5 +13,7 @@ router.get('/', (req, res) => {
 });
 
 router.use('/home', HomePageRouter);
+router.use('/users', UsersRouter);
+router.use('/request', RequestRouter);
 
 export default router;
