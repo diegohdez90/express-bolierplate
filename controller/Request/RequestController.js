@@ -4,7 +4,7 @@ class RequestController {
 
   // eslint-disable-next-line no-unused-vars
   static get(req, res, next) {
-    res.render('home', {
+    res.render('apply', {
       message: 'Home Page',
     });
   }
@@ -20,7 +20,7 @@ class RequestController {
         });
       })
       .catch((err) => {
-        res.status(500).json(err);
+        res.status(500).json(err.errors);
       });
   }
 }

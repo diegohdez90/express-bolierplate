@@ -368,6 +368,7 @@ $RECYCLE.BIN/
 
 # Project
 .vscode
+backend/
 dist/*
 dist/**/*
 

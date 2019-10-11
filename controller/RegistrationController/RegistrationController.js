@@ -48,9 +48,7 @@ class RegistrationController {
       })
       .then((obj) => {
         console.log('Object');
-        
         console.log(obj);
-        
       })
       .catch((err) => res.status(500).json(err));
   }

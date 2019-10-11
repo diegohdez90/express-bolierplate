@@ -39,6 +39,12 @@
                                     </div>
                                 </div>
                         </form>
+                        <div class="row">
+                                ${successMessage}
+                            </div>
+                            <div class="row">
+                                ${globalError}
+                            </div>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -121,8 +127,6 @@ const app = new Vue({
             })
             .catch(err => {
             console.log(err.response);
-            const { data : errors} = err.response;
-            console.log(errors);
             if (typeof errors === "object") {
                 app.fields.map(field => {
                 if (errors[field.name] != null)
