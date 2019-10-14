@@ -56,16 +56,10 @@ class RegistrationController {
               return err;
             });
         } else {
-          console.log('data');
-          
-          console.log(data);
-          
           return data;
         }
       })
       .then((result) => {
-        console.log(result);
-        
         if ('user' in result && 'hotel' in result) {
           res.status(200).json({
             message: 'Profile saved successfully',
