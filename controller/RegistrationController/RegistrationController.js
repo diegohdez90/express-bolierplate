@@ -1,12 +1,11 @@
 import { User } from '../../models/User';
 import { Hotel } from '../../models/Hotel';
+import { Profile } from '../../models/Profile';
 
 class RegistrationController {
 
   // eslint-disable-next-line no-unused-vars
   static signUp(req, res, next) {
-    console.log(req.body);
-    
     new User({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -17,40 +16,65 @@ class RegistrationController {
       accountType: req.body.accountType,
     })
       .save()
-      .then(async(user) => {
-        try {
-          const hotel = await Hotel({
-            name: req.body.hotelName,
-            address: {
-              street: req.body.street,
-              zipCode: req.body.zipCode,
-              city: req.body.city,
-              state: req.body.state,
-              country: req.body.country,
-            },
-          }).save((err) => {
-            if (err) {
-              User.deleteOne({
-                _id: user._id,
-              })
-                .then(() => res.status(400).json(err))
-                .catch((error) => next(error));
-            }
+      .then((user) => new Hotel({
+        name: req.body.hotelName,
+        address: {
+          location: req.body.location,
+          zipCode: req.body.zipCode,
+          city: req.body.city,
+          state: req.body.state,
+          country: req.body.country,
+        },
+      })
+        .save()
+        .then((hotel) => ({
+          user,
+          hotel,
+        }))
+        .catch(async(err) => {
+          await User.deleteOne({
+            _id: user._id,
           });
-          return {
+          return err;
+        }))
+      .then(async(data) => {
+        if ('user' in data && 'hotel' in data) {
+          const { user, hotel } = data;
+          return await new Profile({
             user,
             hotel,
-          };
-            
-        } catch (error) {
-          res.status(500).json(error);
+          })
+            .save()
+            .then((profile) => profile)
+            .catch(async(err) => {
+              await User.deleteOne({
+                _id: user._id,
+              });
+              await Hotel.deleteOne({
+                _id: hotel._id,
+              });
+              return err;
+            });
+        } else {
+          console.log('data');
+          
+          console.log(data);
+          
+          return data;
         }
       })
-      .then((obj) => {
-        console.log('Object');
-        console.log(obj);
+      .then((result) => {
+        console.log(result);
+        
+        if ('user' in result && 'hotel' in result) {
+          res.status(200).json({
+            message: 'Profile saved successfully',
+          });
+        } else {
+          res.status(500).send(result);
+        }
       })
-      .catch((err) => res.status(500).json(err));
+      .catch((err) => res.status(500).send(err));
   }
 }
 

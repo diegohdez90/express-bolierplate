@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 /**
  * 0: Basic
@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
  * 2: Premium
  */
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   firstName: {
     type: String,
     required: true,
@@ -67,6 +67,6 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.model('User', UserSchema);
+const User = model('User', UserSchema);
 
 export { User, UserSchema };
