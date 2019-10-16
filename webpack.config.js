@@ -11,7 +11,6 @@ module.exports = {
     path: path.resolve(__dirname, 'public/js'),
     filename: '[name].js',
   },
-  mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   resolve: {
     extensions: [ '.js', '.vue' ],
