@@ -371,5 +371,6 @@ $RECYCLE.BIN/
 backend/
 dist/*
 dist/**/*
+public/
 
 # End of https://www.gitignore.io/api/git,node,linux,macos,windows,webstorm,phpstorm,sublimetext,visualstudiocode
