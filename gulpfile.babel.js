@@ -7,7 +7,7 @@ import del from 'del';
 import nodemon from 'gulp-nodemon';
 
 const paths = {
-  js: ['./**/*.js', '!dist/**', '!node_modules/**', '!populate.js', '!frontend/**', '!webpack.config.js', '!public/**', '!backend/**', '!webpack/**', '!webpack.config/**'],
+  js: ['./**/*.js', '!dist/**', '!node_modules/**', '!populate.js', '!frontend/**', '!webpack.config.js', '!public/**', '!backend/**', '!webpack/**', '!webpack/**'],
   nonJs: ['./package.json', './.gitignore', './.babelrc'],
   tests: './dyc-survey/**/tests/*.js',
 };
