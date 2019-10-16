@@ -62,7 +62,6 @@ const app = new Vue({
         email: app.fields[4].value,
       })
         .then((res) => {
-          console.log(res);
           app.successMessage = res.data.message;
         })
         .catch((err) => {
