@@ -22,7 +22,7 @@ if (config.env == 'development') {
   app.use(logger('dev'));
 }
 
-app.set('views', `${process.env.PROJECT_DIR}templates` );
+app.set('views', `${process.env.PROJECT_DIR}/templates` );
 app.set('view engine', 'twig');
 
 
@@ -47,6 +47,8 @@ app.use(compress());
 app.use(methodOverride());
 
 app.use(cors());
+
+app.use(express.static(`${process.env.PROJECT_DIR}/public`));
 
 app.use(passport.initialize());
 
