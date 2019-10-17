@@ -1,1 +1,11 @@
-{}
+{
+    "welcomeMessage": "Bienvenidos",
+    "requestRegister": "Registrate para tener permiso a nuestra plataforma",
+    "requestFields": {
+        "requestName": "Nombre",
+        "hotel": "Hotel",
+        "role": "Puesto",
+        "hotelContactPhone": "Telefono de contacto",
+        "email": "Email"
+    }
+}

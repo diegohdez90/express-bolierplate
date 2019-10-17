@@ -21,6 +21,7 @@ dotenv.config();
 i18n.configure({
   locales: ['en', 'es'],
   defaultLocale: 'en',
+  objectNotation: true,
   directory: `${process.env.PROJECT_DIR}/locales` ,
 });
 

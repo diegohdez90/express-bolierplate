@@ -1,3 +1,4 @@
+import { __n, __ } from 'i18n';
 import { Request } from '../../models/Request';
 
 class RequestController {
@@ -5,7 +6,12 @@ class RequestController {
   // eslint-disable-next-line no-unused-vars
   static get(req, res, next) {
     res.render('apply', {
-      message: 'Home Page',
+      message: __('requestRegister'),
+      requestName: __n('requestFields.requestName'),
+      hotel: __n('requestFields.hotel'),
+      role: __n('requestFields.role'),
+      hotelContactPhone: __n('requestFields.hotelContactPhone'),
+      email: __n('requestFields.email'),
     });
   }
 

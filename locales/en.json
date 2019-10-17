@@ -1,1 +1,11 @@
-{}
+{
+	"welcomeMessage": "Welcome",
+	"requestRegister": "Register to get authorization into our system",
+	"requestFields": {
+		"requestName": "Name",
+		"hotel": "Hotel",
+		"role": "Role",
+		"hotelContactPhone": "Contact Phone",
+		"email": "Email"
+	}
+}
