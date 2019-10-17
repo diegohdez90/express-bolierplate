@@ -1,3 +1,4 @@
+import i18n from 'i18n';
 import cors from 'cors';
 import helmet from 'helmet';
 import logger from 'morgan';
@@ -16,13 +17,20 @@ import config from '../env';
 import routes from '../../routes';
 
 dotenv.config();
+
+i18n.configure({
+  locales: ['en', 'es'],
+  defaultLocale: 'es',
+  directory: `${process.env.PROJECT_DIR}/locales` ,
+});
+
 const app = express();
 
 if (config.env == 'development') {
   app.use(logger('dev'));
 }
 
-app.set('views', `${process.env.PROJECT_DIR}/templates` );
+app.set('views', `${process.env.PROJECT_DIR}/templates`);
 app.set('view engine', 'twig');
 
 
@@ -61,6 +69,8 @@ app.use(function onError(err, req, res, next) {
 });
 
 app.use(routes);
+
+app.use(i18n.init);
 
 mongoose.Promise = global.Promise;
 

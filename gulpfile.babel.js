@@ -9,17 +9,21 @@ import nodemon from 'gulp-nodemon';
 const paths = {
   js: ['./**/*.js', '!dist/**', '!node_modules/**', '!populate.js', '!frontend/**', '!webpack.config.js', '!public/**', '!backend/**', '!webpack/**', '!webpack/**'],
   nonJs: ['./package.json', './.gitignore', './.babelrc'],
-  tests: './dyc-survey/**/tests/*.js',
+  i18n: ['./locales/es.json', './locales/en.json'],
+  tests: './rci-project/**/tests/*.js',
 };
 
 gulp.task('clean', () =>
   del(['./dist/**', '!./dist'])
 );
 
-gulp.task('copy', () =>
+gulp.task('copy', gulp.series(() =>
   gulp.src(paths.nonJs)
     .pipe(newer('dist'))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist')), () =>
+  gulp.src(paths.i18n)
+    .pipe(newer('dist'))
+    .pipe(gulp.dest('dist/locales')))
 );
 
 gulp.task('babel', () =>
