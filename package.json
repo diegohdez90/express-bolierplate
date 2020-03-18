@@ -39,7 +39,7 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "request": "^2.88.2",
-    "twig": "^1.13.3"
+    "twig": "^1.15.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
