@@ -67,7 +67,7 @@
     "gulp-newer": "^1.4.0",
     "gulp-nodemon": "^2.5.0",
     "gulp-sourcemaps": "^2.6.5",
-    "lint-staged": "^10.0.8",
+    "lint-staged": "^10.1.1",
     "nodemon": "^2.0.2",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
