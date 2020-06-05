@@ -9,12 +9,12 @@ import nodemon from 'gulp-nodemon';
 const paths = {
   js: ['./**/*.js', '!dist/**', '!node_modules/**', '!populate.js', '!frontend/**', '!webpack.config.js', '!public/**', '!backend/**', '!webpack/**', '!webpack/**'],
   nonJs: ['./package.json', './.gitignore', './.babelrc'],
-  i18n: ['./locales/es.json', './locales/en.json'],
+  i18n: ['locales/es.json', 'locales/en.json'],
   tests: './rci-project/**/tests/*.js',
 };
 
 gulp.task('clean', () =>
-  del(['./dist/**', '!./dist'])
+  del(['./dist/**', '!./dist']),
 );
 
 gulp.task('copy', gulp.series(() =>
@@ -23,7 +23,7 @@ gulp.task('copy', gulp.series(() =>
     .pipe(gulp.dest('dist')), () =>
   gulp.src(paths.i18n)
     .pipe(newer('dist'))
-    .pipe(gulp.dest('dist/locales')))
+    .pipe(gulp.dest('dist/locales'))),
 );
 
 gulp.task('babel', () =>
@@ -37,7 +37,7 @@ gulp.task('babel', () =>
         return path.relative(file.path, __dirname);
       },
     }))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./dist')),
 );
 
 gulp.task('nodemon', gulp.series(
@@ -48,7 +48,7 @@ gulp.task('nodemon', gulp.series(
     ext: 'js',
     ignore: ['node_modules/**/*.js', 'dist/**/*.js'],
     tasks: ['copy', 'babel'],
-  }))
+  })),
 );
 
 gulp.task('serve', gulp.series('clean', 'nodemon'));
